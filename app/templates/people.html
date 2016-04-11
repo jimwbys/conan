@@ -1,0 +1,20 @@
+<table class="table table-hover">
+    <tr>
+        <td width="70px"><a href="{{ url_for('user', nickname=user.nickname) }}"><img src="{{ user.avatar }}" width=80 length=80 /></a></td>
+        <td>
+            <p><a href="{{ url_for('user', nickname=user.nickname) }}">{{ user.nickname }}</a>
+            {% if user.about_me %}
+             <strong>{{user.about_me}}</strong>
+            {% else %}
+             <strong>暂无个人简介</strong>
+            {% endif %}
+            {% if g.user.nickname != user.nickname %}
+              {% if not g.user.is_following(user) %}
+                <a href="{{url_for('follow', nickname=user.nickname)}}">收听</a>
+              {% else %}
+                <a href="{{url_for('unfollow', nickname=user.nickname)}}">取消收听</a>
+              {% endif %}
+            {% endif %}
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% include 'flash.html' %}
+
+<div class="well">
+  <h3>请登陆</h3>
+    <form class="form" action="" method="post" name="login">
+       {{ form.hidden_tag() }}
+       <div class="control-group">
+          <label class="control-label" for="inputEmail">邮箱</label>
+           <div class="controls">
+             {{ form.email(size=30, maxlength=140) }}
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+      {{ form.password(size=30, maxlength=140) }}
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <label class="checkbox">
+        {{ form.remember_me }} 记住我
+      </label>
+      <input class="btn btn-primary" type="submit" value="Sign In"><a href="{{ url_for('register') }}">没有账户？马上注册</a>
+    </div>
+  </div>
+</form>
+</div>
+
+{% endblock %}
